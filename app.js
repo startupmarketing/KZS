@@ -1,12 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
+require('dotenv').config();
+
 const app = express();
 const apiRoutes = require('./api/routes/apis');
 const webviewsRoutes = require('./webviews/routes/webviews');
 const bodyParser = require('body-parser')
 
 mongoose.connect(
-	'mongodb+srv://startupmarketing:klepetalnirobot2018@startupmarketing-hzand.mongodb.net/test?retryWrites=true'
+	'mongodb+srv://startupmarketing:' + process.env.MONGO_ATLAS_PASSWORD + '@startupmarketing-hzand.mongodb.net/test?retryWrites=true'
 );
 
 app.use(bodyParser.json()); // for parsing application/json
