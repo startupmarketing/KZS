@@ -6,7 +6,6 @@ var urlParams = new URLSearchParams(window.location.search);
 var loaded = false;
 function closeWebview(){
   if(loaded){
-    MessengerExtensions
 
     MessengerExtensions.requestCloseBrowser(function success() {
           console.log("Window will be closed!");
@@ -74,6 +73,7 @@ ReactDOM.render(
 
 window.extAsyncInit = function() {
   console.log("Messenger extensions are ready!");
+  loaded = true;
   MessengerExtensions.getSupportedFeatures(function success(result) {
     let features = result.supported_features;
     console.log(features);
