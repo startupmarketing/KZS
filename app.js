@@ -14,7 +14,8 @@ mongoose.connect(
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
-app.use('/kzs', express.static('public'));// setup static files into public folder
+app.use('/kzs', express.static('static/'));// setup static files into public folder
+
 
 app.use('/kzs', apiRoutes);
 app.use('/kzs/webviews', webviewsRoutes);

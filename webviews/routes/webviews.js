@@ -9,6 +9,10 @@ router.get('', (req, res, next) => {
   });
 });
 
+router.get('/quiz', (req, res, next) => {
+res.sendFile('/var/www/messengerbot.si/api/kzs/static/public/quiz/index.html');
+});
+
 
 router.post('', (req, res, next) => {
 	res.status(200).json({
