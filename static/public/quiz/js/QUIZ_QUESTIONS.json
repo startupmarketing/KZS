@@ -6,14 +6,14 @@ var QUIZ_QUESTIONS = [
     question : "Kateri zadetek je od Dončiča?",
     correct_anwser : "top",
     anwser : null,
-    top_pic : URL_TEMP + "/kzs/public/quiz/images/Doncic.gif",
-    bottom_pic : URL_TEMP + "/kzs/public/quiz/images/Gogi.gif"
+    top_pic : URL + "/kzs/public/quiz/images/Doncic.gif",
+    bottom_pic : URL + "/kzs/public/quiz/images/Gogi.gif"
   },
   {
     question : "Kje je pikachu?",
     correct_anwser : "top",
     anwser : null,
-    top_pic : URL_TEMP + "/kzs/public/quiz/images/pikachu.gif",
-    bottom_pic : URL_TEMP + "/kzs/public/quiz/images/star_wars.gif"
+    top_pic : URL + "/kzs/public/quiz/images/pikachu.gif",
+    bottom_pic : URL + "/kzs/public/quiz/images/star_wars.gif"
   }
 ];
