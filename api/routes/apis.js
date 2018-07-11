@@ -5,6 +5,47 @@ var qs = require('querystring');
 const mongoose = require('mongoose');
 
 const Question = require('../models/question');
+const createQuizButtons = (displayUrl) => {
+  return {
+    messages:[
+      {
+        attachment: {
+          type: 'template',
+          payload: {
+            template_type: 'generic',
+            image_aspect_ratio: 'square',
+            elements: [{
+              title: 'Welcome!',
+              subtitle: 'Choose your preferences',
+              buttons:[
+                {
+                  type: 'web_url',
+                  url: displayUrl,
+                  title: 'Webview (compact)',
+                  messenger_extensions: true,
+                  webview_height_ratio: 'compact' // Small view
+                },
+                {
+                  type: 'web_url',
+                  url: displayUrl,
+                  title: 'Webview (tall)',
+                  messenger_extensions: true,
+                  webview_height_ratio: 'tall' // Medium view
+                },
+                {
+                  type: 'web_url',
+                  url: displayUrl,
+                  title: 'Webview (full)',
+                  messenger_extensions: true,
+                  webview_height_ratio: 'full' // large view
+                }
+              ]
+            }]
+          }
+        }
+      }
+  ]};
+};
 
 //Testing req/res
 router.get('', (req, res, next) => {
@@ -17,6 +58,19 @@ router.post('', (req, res, next) => {
 	res.status(200).json({
 		message: 'Post request handled!'
 	});
+});
+
+
+router.get('/quiz/show', (req, res, next) => {
+	res.sendFile('/var/www/messengerbot.si/api/kzs/static/public/quiz/index.html');
+});
+
+router.post('/quiz/chatfuel', (req, res, next) => {
+	const userId = req.body;
+	console.log(userId);
+
+	const displayUrl = 'https://api.messengerbot.si/kzs/webviews/quiz/show';
+	res.json(createQuizButtons(displayUrl)); 
 });
 
 //Api for quiz data
