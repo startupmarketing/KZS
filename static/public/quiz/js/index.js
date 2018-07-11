@@ -30,7 +30,7 @@ class Greeting extends React.Component {
   }
 
   sendData(data){
-    axios.post('http://localhost:7800/kzs/quiz-broadcast?userId=' + urlParams.get('userId'), data)
+    axios.post( URL + '/kzs/quiz-broadcast?userId=' + urlParams.get('userId'), data)
     .then(function (response) {
       console.log(response.data);
     })
