@@ -65,11 +65,11 @@ router.get('/quiz/show', (req, res, next) => {
 	res.sendFile('/var/www/messengerbot.si/api/kzs/static/public/quiz/index.html');
 });
 
-router.post('/quiz/chatfuel', (req, res, next) => {
-	const userId = req.body;
+router.post('/quiz-chatfuel', (req, res, next) => {
+	const userId = req.body['messenger user id'];
 	console.log(userId);
 
-	const displayUrl = 'https://api.messengerbot.si/kzs/webviews/quiz/show';
+	const displayUrl = 'https://api.messengerbot.si/kzs/webviews/quiz/show?userId=' + userId;
 	res.json(createQuizButtons(displayUrl)); 
 });
 
