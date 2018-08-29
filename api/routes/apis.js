@@ -197,5 +197,29 @@ router.post('/questions', (req, res, next) => {
 		})
 	});
 });
-	
+
+//delete all questions
+router.get('/questions-delete', (req, res, next) => {
+	Question.find()
+	.exec()
+	.then(docs => {
+		//console.log(docs);
+		for(var i=0;i<docs.length;i++){
+			console.log(docs[i]._id + "\n");
+			Question.remove({ _id: docs[i]._id })
+			.exec()
+			.then(result => {
+				console.log("Deleted")
+			})
+		}
+		res.status(200).json({
+			message: 'Delete request handled!'
+		});
+	})
+	.catch(err => {
+		console.log(err);
+		res.status(500).json({error : err});
+	});
+});
+
 module.exports = router;
